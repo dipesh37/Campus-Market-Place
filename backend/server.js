@@ -31,6 +31,9 @@ mongoose
   .then(() => console.log("✅ MongoDB Connected Successfully"))
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
+console.log("MONGODB_URI:", process.env.MONGODB_URI);
+console.log("JWT_SECRET:", process.env.JWT_SECRET);
+
 // ✅ Serve frontend (React) build files in production
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
