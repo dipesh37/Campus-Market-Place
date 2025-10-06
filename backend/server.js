@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const path = require("path");
 
 // Load environment variables
 dotenv.config();
@@ -13,17 +14,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Routes
+// Import routes
 const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/products");
 
+// API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
-
-// Health check route
-app.get("/", (req, res) => {
-  res.json({ message: "Campus Marketplace API is running!" });
-});
 
 // MongoDB Connection
 mongoose
@@ -34,19 +31,16 @@ mongoose
   .then(() => console.log("✅ MongoDB Connected Successfully"))
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
+// ✅ Serve frontend (React) build files in production
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+// ✅ Catch-all route — serve React index.html for any route not starting with /api
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../frontend/build", "index.html"));
+});
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
-
-const path = require("path");
-
-// Serve frontend build in production
-app.use(express.static(path.join(__dirname, "../frontend/build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../frontend/build", "index.html"));
-});
-
-module.exports = app;
