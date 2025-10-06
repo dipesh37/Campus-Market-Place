@@ -17,7 +17,7 @@ const mockProducts = [
       year: "4th Year",
       branch: "Computer Science",
       email: "rahul.sharma@nitj.ac.in",
-      phone: "+91 98765 43210"
+      phone: "+91 123456780"
     },
     condition: "Excellent",
     description: "Barely used LED desk lamp with adjustable brightness. Perfect for late-night study sessions!",
@@ -34,7 +34,7 @@ const mockProducts = [
       year: "3rd Year",
       branch: "Electronics",
       email: "priya.verma@nitj.ac.in",
-      phone: "+91 98765 43211"
+      phone: "+91 123456781"
     },
     condition: "Good",
     description: "Complete textbook with all chapters. Minor highlighting included.",
@@ -51,7 +51,7 @@ const mockProducts = [
       year: "4th Year",
       branch: "Mechanical",
       email: "amit.kumar@nitj.ac.in",
-      phone: "+91 98765 43212"
+      phone: "+91 123456782"
     },
     condition: "Very Good",
     description: "3-blade ceiling fan, works perfectly. Selling due to hostel change.",
@@ -68,7 +68,7 @@ const mockProducts = [
       year: "Final Year",
       branch: "Civil",
       email: "sneha.patel@nitj.ac.in",
-      phone: "+91 98765 43213"
+      phone: "+91 123456783"
     },
     condition: "Good",
     description: "Sturdy wooden study table with drawer. Ideal for hostel room.",
@@ -85,7 +85,7 @@ const mockProducts = [
       year: "2nd Year",
       branch: "Electrical",
       email: "vikram.singh@nitj.ac.in",
-      phone: "+91 98765 43214"
+      phone: "+91 123456784"
     },
     condition: "Excellent",
     description: "Thick winter blanket, freshly washed. Perfect for Punjab winters!",
@@ -102,7 +102,7 @@ const mockProducts = [
       year: "3rd Year",
       branch: "IT",
       email: "ananya.reddy@nitj.ac.in",
-      phone: "+91 98765 43215"
+      phone: "+91 123456785"
     },
     condition: "Like New",
     description: "Latest edition with solved examples. Minimal wear and tear.",
@@ -119,7 +119,7 @@ const mockProducts = [
       year: "2nd Year",
       branch: "CSE",
       email: "neha.gupta@nitj.ac.in",
-      phone: "+91 98765 43216"
+      phone: "+91 123456786"
     },
     condition: "Excellent",
     description: "Beautiful blue curtains, 2 panels. Fits standard hostel windows.",
@@ -136,7 +136,7 @@ const mockProducts = [
       year: "3rd Year",
       branch: "Mechanical",
       email: "rohan.mehta@nitj.ac.in",
-      phone: "+91 98765 43217"
+      phone: "+91 123456787"
     },
     condition: "Very Good",
     description: "Casio fx-991EX scientific calculator. All functions working perfectly.",
@@ -153,7 +153,7 @@ const mockProducts = [
       year: "1st Year",
       branch: "Civil",
       email: "kavya.sharma@nitj.ac.in",
-      phone: "+91 98765 43218"
+      phone: "+91 123456788"
     },
     condition: "Good",
     description: "Complete geometry box with compass, protractor, and rulers.",
@@ -170,7 +170,7 @@ const mockProducts = [
       year: "4th Year",
       branch: "ECE",
       email: "aditya.joshi@nitj.ac.in",
-      phone: "+91 98765 43219"
+      phone: "+91 123456789"
     },
     condition: "Very Good",
     description: "Fast boiling electric kettle. Perfect for tea/coffee in hostel.",
