@@ -532,23 +532,23 @@ const App = () => {
         </div>
 
         {showSellModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto">
-            <div className="bg-white rounded-2xl max-w-2xl w-full my-8">
-              <div className="sticky top-0 bg-white border-b px-6 py-4 flex items-center justify-between rounded-t-2xl">
-                <h2 className="text-2xl font-bold text-gray-800">List Your Item for Sale</h2>
-                <button
-                  onClick={() => {
-                    setShowSellModal(false);
-                    setSellErrors({});
-                    setImagePreview(null);
-                  }}
-                  className="text-gray-500 hover:text-gray-700"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] flex flex-col my-8">
+            <div className="bg-white border-b px-6 py-4 flex items-center justify-between rounded-t-2xl flex-shrink-0">
+              <h2 className="text-2xl font-bold text-gray-800">List Your Item for Sale</h2>
+              <button
+                onClick={() => {
+                  setShowSellModal(false);
+                  setSellErrors({});
+                  setImagePreview(null);
+                }}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
 
-              <form onSubmit={handleSellProduct} className="p-6">
+            <form onSubmit={handleSellProduct} className="p-6 overflow-y-auto flex-1">
                 {sellErrors.general && (
                   <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm">
                     {sellErrors.general}
