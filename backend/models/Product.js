@@ -5,27 +5,32 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide product name"],
     trim: true,
+    minlength: [3, "Product name must be at least 3 characters"],
   },
   category: {
     type: String,
-    required: [true, "Please provide product category"],
-    enum: ["lamp", "book", "fan", "table", "blanket", "other"],
+    required: [true, "Please provide category"],
+    trim: true,
     lowercase: true,
   },
   price: {
     type: Number,
-    required: [true, "Please provide product price"],
+    required: [true, "Please provide price"],
     min: [0, "Price cannot be negative"],
   },
   condition: {
     type: String,
-    required: [true, "Please specify product condition"],
-    enum: ["Excellent", "Very Good", "Good", "Fair", "Like New"],
+    required: [true, "Please provide condition"],
+    enum: ["Like New", "Excellent", "Very Good", "Good", "Fair"],
   },
   description: {
     type: String,
-    required: [true, "Please provide product description"],
-    maxlength: [500, "Description cannot exceed 500 characters"],
+    required: [true, "Please provide description"],
+    minlength: [10, "Description must be at least 10 characters"],
+  },
+  image: {
+    type: String, // Base64 encoded image string
+    required: [true, "Please provide product image"],
   },
   owner: {
     userId: {
@@ -33,17 +38,26 @@ const productSchema = new mongoose.Schema({
       ref: "User",
       required: true,
     },
-    name: String,
-    email: String,
-    phone: String,
-    year: String,
-    branch: String,
-  },
-  rating: {
-    type: Number,
-    default: 4.5,
-    min: 0,
-    max: 5,
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
+    year: {
+      type: String,
+      required: true,
+    },
+    branch: {
+      type: String,
+      required: true,
+    },
   },
   isAvailable: {
     type: Boolean,

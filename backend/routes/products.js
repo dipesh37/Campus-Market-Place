@@ -69,6 +69,7 @@ router.post("/", protect, async (req, res) => {
       phone,
       year,
       branch,
+      image,
     } = req.body;
 
     // Validation
@@ -79,25 +80,34 @@ router.post("/", protect, async (req, res) => {
       });
     }
 
+    if (!phone || !year || !branch) {
+      return res.status(400).json({
+        success: false,
+        message: "Please provide phone number, year, and branch",
+      });
+    }
+
     const product = await Product.create({
       name,
       category,
       price,
       condition,
       description,
+      image: image || "📦",
       owner: {
         userId: req.user._id,
         name: req.user.name,
         email: req.user.email,
-        phone: phone || "Not provided",
-        year: year || "Not specified",
-        branch: branch || "Not specified",
+        phone: phone,
+        year: year,
+        branch: branch,
       },
     });
 
     res.status(201).json({
       success: true,
       data: product,
+      message: "Product listed successfully!",
     });
   } catch (error) {
     console.error("Create product error:", error);
