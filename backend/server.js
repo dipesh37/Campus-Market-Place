@@ -23,12 +23,6 @@ app.use("/api/products", require("./routes/products"));
 app.use("/api/lost-items", require("./routes/lost-items"));
 
 // Health check route
-app.get("/", (req, res) => {
-  res.json({
-    success: true,
-    message: "Campus Kart API is running",
-  });
-});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -47,6 +41,22 @@ app.use(express.static(path.join(__dirname, "../frontend/build")));
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../frontend/build", "index.html"));
 });
+
+// ✅ Serve frontend (React build) in production
+const __dirname1 = path.resolve();
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname1, "frontend", "build")));
+
+  // Catch-all: send React index.html for any route not starting with /api
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"));
+  });
+} else {
+  // For local dev
+  app.get("/", (req, res) => {
+    res.json({ success: true, message: "Campus Kart API is running" });
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 
