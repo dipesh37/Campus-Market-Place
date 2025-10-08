@@ -39,6 +39,14 @@ app.use((err, req, res, next) => {
   });
 });
 
+// ✅ Serve frontend (React) build files in production
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+// ✅ Catch-all route — serve React index.html for any route not starting with /api
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../frontend/build", "index.html"));
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
