@@ -684,18 +684,18 @@ const App = () => {
                   key={product._id}
                   onClick={() => setSelectedProduct(product)}
                   className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all cursor-pointer overflow-hidden"
-                >
-                  <div className="aspect-video bg-gradient-to-br from-orange-50 to-orange-100 overflow-hidden">
-                    {product.image ? (
-                      <img 
-                        src={product.image} 
-                        alt={product.name}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-6xl">📦</div>
-                    )}
-                  </div>
+                   >
+                   <div className="h-56 bg-white flex items-center justify-center overflow-hidden border-b">
+                   {product.image ? (
+                    <img 
+                      src={product.image} 
+                      alt={product.itemName}
+                      className="object-contain max-h-full max-w-full transition-transform duration-300 hover:scale-105"
+                    />
+                  ) : (
+                    <div className="text-6xl">📦</div>
+                  )}
+                </div>
                   <div className="p-6">
                     <h3 className="font-bold text-lg text-gray-800 mb-2">{product.name}</h3>
                     <div className="flex items-center justify-between mb-3">
@@ -1338,13 +1338,12 @@ const App = () => {
                       <div className="flex items-center space-x-3 text-gray-700">
                         <Calendar className="w-5 h-5 text-red-600" />
                         <div>
-                        <p className="font-semibold">
-                        {new Date(selectedLostItem.dateLost).toLocaleDateString('en-GB', {
-                          day: '2-digit',
-                          month: '2-digit',
-                          year: 'numeric'
-                        })}
-                      </p>
+                          <p className="text-sm font-medium text-gray-500">Date Lost</p>
+                          <p className="font-semibold">{new Date(selectedLostItem.dateLost).toLocaleDateString('en-GB', { 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                          })}</p>
 
                         </div>
                       </div>
