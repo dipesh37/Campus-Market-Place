@@ -757,7 +757,7 @@ const App = () => {
                         <img 
                           src={imagePreview} 
                           alt="Preview" 
-                          className="w-full h-60 object-contain bg-white rounded-t-lg"
+                          className="max-h-64 mx-auto rounded-lg"
                         />
                         <button
                           type="button"
@@ -1031,21 +1031,24 @@ const App = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredLostItems.map(item => (
                 <div
-                  key={item._id}
-                  onClick={() => setSelectedLostItem(item)}
-                  className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all cursor-pointer overflow-hidden border-l-4 border-red-500"
-                >
-                  <div className="aspect-video bg-gradient-to-br from-blue-50 to-blue-100 overflow-hidden">
-                    {item.image ? (
-                      <img 
-                        src={item.image} 
-                        alt={item.itemName}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-6xl">🔍</div>
-                    )}
-                  </div>
+                key={item._id}
+                onClick={() => setSelectedLostItem(item)}
+                className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer border border-gray-200 overflow-hidden"
+              >
+              
+                 <div className="h-56 bg-white flex items-center justify-center overflow-hidden border-b">
+                   {item.image ? (
+                    <img 
+                      src={item.image} 
+                      alt={item.itemName}
+                      className="object-contain max-h-full max-w-full transition-transform duration-300 hover:scale-105"
+                    />
+                  ) : (
+                    <div className="text-6xl">🔍</div>
+                  )}
+                </div>
+                
+
                   <div className="p-6">
                     <h3 className="font-bold text-lg text-gray-800 mb-2">{item.itemName}</h3>
                     <p className="text-sm text-gray-600 mb-3 line-clamp-2">{item.description}</p>
@@ -1294,12 +1297,11 @@ const App = () => {
                 <div className="grid md:grid-cols-2">
                   <div className="bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-8">
                     {selectedLostItem.image ? (
-                      <img
-                      src={selectedLostItem.image}
-                      alt={selectedLostItem.itemName}
-                      className="w-full h-60 object-contain bg-white rounded-t-lg"
-                    />
-                    
+                      <img 
+                        src={selectedLostItem.image} 
+                        alt={selectedLostItem.itemName}
+                        className="max-w-full max-h-96 object-contain rounded-lg"
+                      />
                     ) : (
                       <div className="text-9xl">🔍</div>
                     )}
@@ -1331,7 +1333,7 @@ const App = () => {
                         <Calendar className="w-5 h-5 text-red-600" />
                         <div>
                           <p className="text-sm font-medium text-gray-500">Date Lost</p>
-                          <p className="font-semibold">{new Date(selectedLostItem.dateLost).toLocaleDateString('en-GB', { 
+                          <p className="font-semibold">{new Date(selectedLostItem.dateLost).toLocaleDateString('en-', { 
                             year: 'numeric', 
                             month: 'long', 
                             day: 'numeric' 
