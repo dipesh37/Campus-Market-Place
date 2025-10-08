@@ -757,7 +757,7 @@ const App = () => {
                         <img 
                           src={imagePreview} 
                           alt="Preview" 
-                          className="max-h-64 mx-auto rounded-lg"
+                          className="w-full h-60 object-contain bg-white rounded-t-lg"
                         />
                         <button
                           type="button"
@@ -1294,11 +1294,12 @@ const App = () => {
                 <div className="grid md:grid-cols-2">
                   <div className="bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-8">
                     {selectedLostItem.image ? (
-                      <img 
-                        src={selectedLostItem.image} 
-                        alt={selectedLostItem.itemName}
-                        className="max-w-full max-h-96 object-contain rounded-lg"
-                      />
+                      <img
+                      src={selectedLostItem.image}
+                      alt={selectedLostItem.itemName}
+                      className="w-full h-60 object-contain bg-white rounded-t-lg"
+                    />
+                    
                     ) : (
                       <div className="text-9xl">🔍</div>
                     )}
@@ -1330,7 +1331,7 @@ const App = () => {
                         <Calendar className="w-5 h-5 text-red-600" />
                         <div>
                           <p className="text-sm font-medium text-gray-500">Date Lost</p>
-                          <p className="font-semibold">{new Date(selectedLostItem.dateLost).toLocaleDateString('en-US', { 
+                          <p className="font-semibold">{new Date(selectedLostItem.dateLost).toLocaleDateString('en-GB', { 
                             year: 'numeric', 
                             month: 'long', 
                             day: 'numeric' 
