@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
-const protect = async (req, res, next) => {
+exports.protect = async (req, res, next) => {
   let token;
 
   if (
@@ -19,25 +19,26 @@ const protect = async (req, res, next) => {
       req.user = await User.findById(decoded.id).select("-password");
 
       if (!req.user) {
-        return res
-          .status(401)
-          .json({ success: false, message: "User not found" });
+        return res.status(401).json({
+          success: false,
+          message: "User not found",
+        });
       }
 
       next();
     } catch (error) {
       console.error("Auth middleware error:", error);
-      return res
-        .status(401)
-        .json({ success: false, message: "Not authorized, token failed" });
+      return res.status(401).json({
+        success: false,
+        message: "Not authorized, token failed",
+      });
     }
   }
 
   if (!token) {
-    return res
-      .status(401)
-      .json({ success: false, message: "Not authorized, no token" });
+    return res.status(401).json({
+      success: false,
+      message: "Not authorized, no token",
+    });
   }
 };
-
-module.exports = { protect };
