@@ -1059,7 +1059,13 @@ const App = () => {
                       </div>
                       <div className="flex items-center space-x-2 text-gray-700">
                         <Calendar className="w-4 h-4 text-red-500" />
-                        <span>{new Date(item.dateLost).toLocaleDateString()}</span>
+                        <span>
+                        {new Date(item.dateLost).toLocaleDateString('en-GB', {
+                          day: '2-digit',
+                          month: '2-digit',
+                          year: 'numeric'
+                        })}
+                      </span>
                       </div>
                     </div>
                   </div>
@@ -1332,12 +1338,14 @@ const App = () => {
                       <div className="flex items-center space-x-3 text-gray-700">
                         <Calendar className="w-5 h-5 text-red-600" />
                         <div>
-                          <p className="text-sm font-medium text-gray-500">Date Lost</p>
-                          <p className="font-semibold">{new Date(selectedLostItem.dateLost).toLocaleDateString('en-', { 
-                            year: 'numeric', 
-                            month: 'long', 
-                            day: 'numeric' 
-                          })}</p>
+                        <p className="font-semibold">
+                        {new Date(selectedLostItem.dateLost).toLocaleDateString('en-GB', {
+                          day: '2-digit',
+                          month: '2-digit',
+                          year: 'numeric'
+                        })}
+                      </p>
+
                         </div>
                       </div>
                     </div>
